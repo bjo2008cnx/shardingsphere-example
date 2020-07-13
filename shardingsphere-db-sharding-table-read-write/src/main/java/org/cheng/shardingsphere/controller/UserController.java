@@ -50,8 +50,9 @@ public class UserController {
 		for (long i = 0; i < 100; i++) {
 			User user = new User();
 			user.setDataSource(i);
-			user.setCity("深圳");
-			user.setName("李四");
+			user.setCity("hangzhou");
+			user.setName("WangLao");
+			user.setId(i+1);
 			userService.save(user);
 		}
 		return "success";

@@ -56,11 +56,12 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	public IPage<Map<String, Object>> page() {
-		LambdaQueryWrapper<User> queryWrapper = Wrappers.lambdaQuery();
-		queryWrapper.ge(User::getId, 10);
-		queryWrapper.orderByAsc(User::getId);
-		Page<User> page = new Page<>(2, 10);
-		return userManager.pageMaps(page, queryWrapper);
+//		LambdaQueryWrapper<User> queryWrapper = Wrappers.lambdaQuery();
+//		queryWrapper.ge(User::getId, 10);
+//		queryWrapper.orderByAsc(User::getId);
+//		Page<User> page = new Page<>(2, 10);
+//		return userManager.pageMaps(page, queryWrapper);
+		return null;
 	}
 
 }
