@@ -1,5 +1,6 @@
 package org.cheng.shardingsphere.controller;
 
+import java.util.Random;
 import org.cheng.shardingsphere.entity.User;
 import org.cheng.shardingsphere.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +48,11 @@ public class UserController {
 	@ApiOperation(value = "批添加")
 	@PostMapping("/batch")
 	public Object batch() {
+		Random random = new Random();
 		for (long i = 0; i < 100; i++) {
 			User user = new User();
-			user.setDataSource(i);
+			long dataSource = random.nextInt(10);
+			user.setDataSource(dataSource);
 			user.setCity("hangzhou");
 			user.setName("WangLao");
 			user.setId(i+1);

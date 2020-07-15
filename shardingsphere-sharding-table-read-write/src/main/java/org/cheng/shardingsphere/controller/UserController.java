@@ -54,9 +54,9 @@ public class UserController {
 	public Object batch() {
 		for (long i = 0; i < 100; i++) {
 			User user = new User();
-			user.setId(i);
-			user.setCity("深圳");
-			user.setName("李四");
+			user.setId(i+1);
+			user.setCity("HangZhou");
+			user.setName("Wang.Lao");
 			userService.save(user);
 		}
 		return "success";

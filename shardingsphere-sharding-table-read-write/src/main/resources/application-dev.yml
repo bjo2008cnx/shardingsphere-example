@@ -21,15 +21,15 @@ spring:
       master:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/shardingsphere-demo1?characterEncoding=utf-8
+        url: jdbc:mysql://localhost:3306/shardingsphere-demo-master?characterEncoding=utf-8
         username: root
-        password: lucheng
+        password: root
       slave:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/shardingsphere-demo2?characterEncoding=utf-8
+        url: jdbc:mysql://localhost:3306/shardingsphere-demo-slave?characterEncoding=utf-8
         username: root
-        password: lucheng
+        password: root
     sharding:
       default-data-source-name: master
       master-slave-rules:

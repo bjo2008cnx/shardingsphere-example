@@ -32,29 +32,48 @@ spring:
       sql:
         show: true
     datasource:
-      names: ds0,ds1
+      names: master0,slave0
 
-      ds0:
+      master0:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
         url: jdbc:mysql://localhost:3306/shardingsphere-demo0-master?characterEncoding=utf-8
         username: root
         password: root
 
-      ds1:
+      slave0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/shardingsphere-demo0-slave?characterEncoding=utf-8
+        username: root
+        password: root
+
+      master1:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
         url: jdbc:mysql://localhost:3306/shardingsphere-demo1-master?characterEncoding=utf-8
         username: root
         password: root
 
+      slave1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/shardingsphere-demo1-slave?characterEncoding=utf-8
+        username: root
+        password: root
     sharding:
-#      default-data-source-name: master0
-      default-database-strategy:
-        inline:
-          sharding-column: id
-          algorithm-expression: ds$->{id % 2}
-
+      default-data-source-name: master0
+#      default-database-strategy:
+#        inline:
+#          sharding-column: id 
+#          algorithm-expression: ds$->{id % 2}
+      master-slave-rules:
+        ds0:
+          master-data-source-name: master0
+          slave-data-source-names: slave0
+        ds1: 
+          master-data-source-name: master1
+          slave-data-source-names: slave1
       tables:
         user:
           actual-data-nodes: ds$->{0..1}.user_${0..3}
