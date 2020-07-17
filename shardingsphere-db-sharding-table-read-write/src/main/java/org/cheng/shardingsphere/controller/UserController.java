@@ -49,13 +49,13 @@ public class UserController {
 	@PostMapping("/batch")
 	public Object batch() {
 		Random random = new Random();
-		for (long i = 0; i < 100; i++) {
+		for (long i = 0; i < 1000; i++) {
 			User user = new User();
-			long dataSource = random.nextInt(10);
+			long dataSource = random.nextInt(100);
 			user.setDataSource(dataSource);
 			user.setCity("hangzhou");
 			user.setName("WangLao");
-			user.setId(i+1);
+      //user.setId((Long) generator.generateKey());
 			userService.save(user);
 		}
 		return "success";

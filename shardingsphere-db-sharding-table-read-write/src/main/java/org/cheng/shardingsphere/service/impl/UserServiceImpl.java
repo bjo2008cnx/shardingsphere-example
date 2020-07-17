@@ -31,24 +31,15 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	@HystrixCommand(fallbackMethod = "getDb")
+//	@HystrixCommand(fallbackMethod = "getDb")
 	public User get(Long id) {
-		String key = USER_KEY + id;
-		User user = redisUtils.get(key);
-		if(user!=null) {
-			return user;
-		}
-
-		synchronized (key) {
-			user = userManager.get(id);
-			redisUtils.set(USER_KEY + id, user);
-		}
-		return user;
+		return userManager.get(id);
 	}
 
 	public User getDb(Long id) {
-		log.error("熔断降级");
-		return null;
+		return userManager.get(id);
+//		log.error("熔断降级");
+//		return null;
 	}
 	
 	@Override

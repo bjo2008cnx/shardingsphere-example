@@ -12,6 +12,7 @@ import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
 public class ExampleMain {
 
     public static void main(final String[] args) {
+        System.setProperty("spring.profiles.active","dev");
         SpringApplication.run(ExampleMain.class, args);
     }
 }

@@ -17,4 +17,4 @@ management:
         auto-time-requests: true
 logging:
   level:
-    root: DEBUG
+    root: INFO

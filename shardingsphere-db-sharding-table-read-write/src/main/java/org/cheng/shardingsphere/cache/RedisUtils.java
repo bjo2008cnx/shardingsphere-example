@@ -114,11 +114,11 @@ public class RedisUtils<T> {
 	 * @param key 键
 	 * @return 值
 	 */
-	@HystrixCommand(
-			commandKey = REDIS_SET_COMMAND,
-            groupKey = REDIS_SET_COMMAND,
-            threadPoolKey = REDIS_SET_COMMAND,
-			fallbackMethod = "getLocal")
+//	@HystrixCommand(
+//			commandKey = REDIS_SET_COMMAND,
+//            groupKey = REDIS_SET_COMMAND,
+//            threadPoolKey = REDIS_SET_COMMAND
+//		)
 	public T get(String key) {
 		return key == null ? null : redisTemplate.opsForValue().get(key);
 	}
