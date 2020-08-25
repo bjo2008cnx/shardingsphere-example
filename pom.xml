@@ -40,9 +40,9 @@
 	</properties>
 
 	<modules>
-		<module>shardingsphere-read-write</module>
-		<module>shardingsphere-sharding-table-read-write</module>
-		<module>shardingsphere-db-sharding-table-read-write</module>
+		<module>read-write</module>
+		<module>sharding-table-read-write</module>
+		<module>sharding-db-read-write</module>
 	</modules>
 
 	<dependencyManagement>

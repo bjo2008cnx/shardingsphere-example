@@ -1,7 +1,5 @@
 package org.cheng.shardingsphere.service.impl;
 
-import org.apache.shardingsphere.transaction.annotation.ShardingTransactionType;
-import org.apache.shardingsphere.transaction.core.TransactionType;
 import org.cheng.shardingsphere.cache.RedisUtils;
 import org.cheng.shardingsphere.entity.User;
 import org.cheng.shardingsphere.manager.IUserManager;
@@ -10,13 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-//@Transactional
 public class UserServiceImpl implements IUserService {
 	@Autowired
 	private IUserManager userManager;
@@ -61,7 +57,6 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	@Transactional
-	@ShardingTransactionType(TransactionType.XA) 
 	public User get2add(User dto) {
 		userManager.add(dto);
 		User u = userManager.get(2L);
